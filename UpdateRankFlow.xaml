@@ -99,8 +99,9 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="UpdateRank" sap:VirtualizedContainerService.HintSize="972.8000000000001,416" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="UpdateRank" sap:VirtualizedContainerService.HintSize="826.4000000000001,602.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="variable1" />
       <Variable x:TypeArguments="s:DateTime" Name="endDate" />
       <Variable x:TypeArguments="s:DateTime" Name="startDate" />
       <Variable x:TypeArguments="sd:DataTable" Name="customerRank" />
@@ -123,13 +124,14 @@
           <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Update Customer Rank" sap:VirtualizedContainerService.HintSize="537.6,3688" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Update Customer Rank" sap:VirtualizedContainerService.HintSize="537.6,3241.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
-          <Variable x:TypeArguments="x:Double" Name="totalAmount" />
-          <Variable x:TypeArguments="x:String" Name="totalAmountStr" />
+          <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="filteredOrder" />
           <Variable x:TypeArguments="x:Int32" Name="monthsBack" />
-          <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Name="customerTotalAmount" />
+          <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="customerTotalAmount" />
           <Variable x:TypeArguments="sd:DataTable" Name="dtOrder" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtRank" />
+          <Variable x:TypeArguments="x:Int32" Name="line" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -143,27 +145,6 @@
           </ui:InputDialog.Result>
         </ui:InputDialog>
         <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtOrder]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="504,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\Don_hang.xlsx" />
-        <If Condition="[dtOrder.RowCount &gt;0]" sap:VirtualizedContainerService.HintSize="504,396.8" sap2010:WorkflowViewState.IdRef="If_2">
-          <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,168.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Lấy data thành công&quot;]" />
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </Sequence>
-          </If.Else>
-        </If>
         <Assign sap:VirtualizedContainerService.HintSize="504,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="s:DateTime">[startDate]</OutArgument>
@@ -180,7 +161,7 @@
             <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.AddDays(-DateTime.Now.Day)]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim filteredOrder As DataTable = dtOrder.Clone()&#xD;&#xA;For Each row As DataRow In dtOrder.Rows&#xD;&#xA;    Dim orderDate As DateTime&#xD;&#xA;    If row(&quot;Email&quot;).ToString &lt;&gt; &quot;&quot; AndAlso DateTime.TryParse(row(&quot;Ngày lập&quot;).ToString, orderDate) Then&#xD;&#xA;        If orderDate &gt;= startDate AndAlso orderDate &lt;= endDate Then&#xD;&#xA;            filteredOrder.ImportRow(row)&#xD;&#xA;        End If&#xD;&#xA;    End If&#xD;&#xA;Next&#xD;&#xA;dtOrder = filteredOrder" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="504,196.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim filteredOrder As DataTable = dtOrder.Clone()&#xA;For Each row As DataRow In dtOrder.Rows&#xA;    Dim orderDate As DateTime&#xA;    If row(&quot;Email&quot;).ToString &lt;&gt; &quot;&quot; AndAlso DateTime.TryParse(row(&quot;Ngày lập&quot;).ToString, orderDate) Then&#xA;        If orderDate &gt;= startDate AndAlso orderDate &lt;= endDate Then&#xA;            filteredOrder.ImportRow(row)&#xA;        End If&#xA;    End If&#xA;Next&#xA;dtOrder = filteredOrder" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="504,196.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
           <ui:InvokeCode.Arguments>
             <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dtOrder">[dtOrder]</InOutArgument>
             <InArgument x:TypeArguments="s:DateTime" x:Key="startDate">[startDate]</InArgument>
@@ -196,6 +177,8 @@
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="502.4,860" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="email" />
+                  <Variable x:TypeArguments="x:String" Name="totalAmountStr" />
+                  <Variable x:TypeArguments="x:Double" Name="totalAmount" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -266,30 +249,43 @@
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:BuildDataTable DataTable="[customerRank]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="504,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Email&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Customer_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Total_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Period&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Rank&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each email" sap:VirtualizedContainerService.HintSize="504,742.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[customerTotalAmount.Keys]">
+        <ui:BuildDataTable DataTable="[customerRank]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="504,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Email&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Customer_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Period&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Rank&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each email" sap:VirtualizedContainerService.HintSize="504,857.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[customerTotalAmount.Keys]">
           <ui:ForEach.Body>
-            <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+                <DelegateInArgument x:TypeArguments="x:String" Name="email" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="467.2,612" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="467.2,727.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="customerName" />
                   <Variable x:TypeArguments="x:String" Name="caculatePeriod" />
                   <Variable x:TypeArguments="x:String" Name="rank" />
+                  <Variable x:TypeArguments="x:String" Name="totalAmount" />
+                  <Variable x:TypeArguments="x:Double" Name="totalAmount_rank" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_8">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[customerName]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[dtOrder.AsEnumerable().Where(Function(r) r.Field(Of String)("Tên khách hàng").Trim() = customerName).Select(Function(r) r.Field(Of String)("Tên khách hàng").Trim()).FirstOrDefault()]</InArgument>
+                    <InArgument x:TypeArguments="x:String" xml:space="preserve">[dtOrder.AsEnumerable() _
+                        .Where(Function(r) r.Field(Of String)("Email").Trim() = email) _
+                        .Select(Function(r) r.Field(Of String)("Tên khách hàng").Trim()) _
+                        .FirstOrDefault()]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Double">[totalAmount_rank]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Double">[customerTotalAmount(email)]</InArgument>
                   </Assign.Value>
                 </Assign>
                 <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
@@ -305,44 +301,24 @@
                     <OutArgument x:TypeArguments="x:String">[rank]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[If(totalAmount &gt;= 7000000, "Diamond", If(totalAmount &gt;= 5000000, "Gold", If(totalAmount &gt;= 3000000, "Silver", "Bronze")))]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[If(totalAmount_rank &gt;= 7000000, "Diamond", If(totalAmount_rank &gt;= 5000000, "Gold", If(totalAmount_rank &gt;= 3000000, "Silver", "Bronze")))]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {customerName, totalAmount, caculatePeriod, rank}]" DataTable="[customerRank]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {email, customerName, totalAmount_rank, caculatePeriod, rank}]" DataTable="[customerRank]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
               </Sequence>
             </ActivityAction>
           </ui:ForEach.Body>
         </ui:ForEach>
-        <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="504,537.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="Khách hàng.xlsx">
-          <ui:ExcelApplicationScope.Body>
-            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="467.2,404.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Name="dtRank" />
-                  <Variable x:TypeArguments="x:Int32" Name="line" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtRank]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="CustomerRank" />
-                <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Int32">[line]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int32">[dtRank.RowCount+2]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:WriteRange WorkbookPathResource="{x:Null}" DataTable="[dtRank]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="[“A” &amp; line]" WorkbookPath="Khách hàng.xlsx" />
-              </Sequence>
-            </ActivityAction>
-          </ui:ExcelApplicationScope.Body>
-        </ui:ExcelApplicationScope>
+        <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtRank]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="504,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="CustomerRank" WorkbookPath="CustomerList.xlsx" />
+        <Assign sap:VirtualizedContainerService.HintSize="504,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[line]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[dtRank.RowCount+2]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:WriteRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[customerRank]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="504,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="CustomerRank" StartingCell="[“A” &amp; line]" WorkbookPath="CustomerList.xlsx" />
       </Sequence>
     </FlowStep>
   </Flowchart>
