@@ -2,7 +2,7 @@
   "name": "Final_RPAproject",
   "projectId": "cc332fd9-d0ba-4887-8f79-31ca9ec18756",
   "description": "Blank Process",
-  "main": "SendEmail.xaml",
+  "main": "Flowchart.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[3.1.1]",
     "UiPath.Mail.Activities": "[2.4.10]",
@@ -53,8 +53,8 @@
       "output": []
     },
     {
-      "filePath": "SendEmail.xaml",
-      "uniqueId": "283026d7-de88-44d2-a042-bbe05f3f400b",
+      "filePath": "Flowchart.xaml",
+      "uniqueId": "fe8170b4-347c-4ed3-bedd-b642c75d0567",
       "input": [],
       "output": []
     }
