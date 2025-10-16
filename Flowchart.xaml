@@ -132,7 +132,7 @@
           <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Send email" sap:VirtualizedContainerService.HintSize="553.6,3881.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Send email" sap:VirtualizedContainerService.HintSize="588.8,3540.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="startDate" />
           <Variable x:TypeArguments="x:String" Name="endDate" />
@@ -146,8 +146,8 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[customerRankData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="520,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="customerRank" WorkbookPath="C:\Users\as\Downloads\Customer_list - Copy.xlsx" />
-        <Assign DisplayName="Assign start date" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+        <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[customerRankData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="555.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="customerRank" WorkbookPath="C:\Users\as\Downloads\Customer_list - Copy.xlsx" />
+        <Assign DisplayName="Assign start date" sap:VirtualizedContainerService.HintSize="555.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[startDate]</OutArgument>
           </Assign.To>
@@ -155,7 +155,7 @@
             <InArgument x:TypeArguments="x:String">[New DateTime(Date.Now.Year, Date.Now.Month, 1).ToString()]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign end date" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+        <Assign DisplayName="Assign end date" sap:VirtualizedContainerService.HintSize="555.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[endDate]</OutArgument>
           </Assign.To>
@@ -163,7 +163,7 @@
             <InArgument x:TypeArguments="x:String">[Date.Now.AddDays(30R).ToString()]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,218.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="555.2,218.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
           <ui:CommentOut.Body>
             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,108" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
@@ -182,21 +182,21 @@
             </Sequence>
           </ui:CommentOut.Body>
         </ui:CommentOut>
-        <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" DataTable="[customerRankData]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="520,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[filteredCustomers]" SelectColumnsMode="Remove" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Rows count: &quot; &amp; customerRankData.Rows.Count.ToString]" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filteredCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="520,2887.2" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+        <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" DataTable="[customerRankData]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="555.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[filteredCustomers]" SelectColumnsMode="Remove" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="555.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Rows count: &quot; &amp; customerRankData.Rows.Count.ToString]" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filteredCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="555.2,2546.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="518.4,2714.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,2373.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="484.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strEmail]</OutArgument>
                   </Assign.To>
@@ -204,7 +204,7 @@
                     <InArgument x:TypeArguments="x:String">[CurrentRow("Email ID").ToString()]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="484.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCustomer]</OutArgument>
                   </Assign.To>
@@ -212,7 +212,7 @@
                     <InArgument x:TypeArguments="x:String">[CurrentRow("Customer").ToString()]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="484.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[TotalAmount]</OutArgument>
                   </Assign.To>
@@ -220,7 +220,7 @@
                     <InArgument x:TypeArguments="x:String">[CurrentRow("Rank").ToString()]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="484.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[template]</OutArgument>
                   </Assign.To>
@@ -228,7 +228,7 @@
                     <InArgument x:TypeArguments="x:String">[String.Format("Chào {0},&lt;br&gt;&lt;br&gt;Xếp hạng của bạn hiện tại là: {1}&lt;br&gt;&lt;br&gt;Cảm ơn bạn đã mua sắm với chúng tôi! &lt;br&gt;Cảm ơn bạn đã luôn đồng hành cùng chúng tôi!", strCustomer, Rank)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" ContinueOnError="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="484.8,492.8" sap2010:WorkflowViewState.IdRef="SendMail_4" IgnoreCRL="False" IsBodyHtml="True" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
+                <ui:SendMail MailMessage="{x:Null}" ResourceAttachmentList="{x:Null}" AttachmentInputMode="FilePaths" Bcc="{x:Null}" Body="[template]" Cc="{x:Null}" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" ContinueOnError="True" DisplayName="Send SMTP Email" Email="{x:Null}" EnableSSL="True" From="{x:Null}" sap:VirtualizedContainerService.HintSize="520,492.8" sap2010:WorkflowViewState.IdRef="SendMail_8" IgnoreCRL="{x:Null}" IsBodyHtml="True" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="[Nothing]" ResourceAttachments="{x:Null}" Result="{x:Null}" SecureConnection="Auto" SecurePassword="{x:Null}" Server="{x:Null}" Subject="Cập nhật hạng customer" TimeoutMS="{x:Null}" To="[strEmail]" UseISConnection="True" UseOAuth="{x:Null}" UseRichTextEditor="True">
                   <ui:SendMail.AttachmentsBackup>
                     <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
                       <usau:BackupSlot.BackupValues>
@@ -239,7 +239,18 @@
                   <ui:SendMail.ConnectionDetailsBackupSlot>
                     <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
                       <usau:BackupSlot.BackupValues>
-                        <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+                        <scg:List x:TypeArguments="x:Object" x:Key="IntegrationService" Capacity="1">
+                          <x:String>15c1acff-7dbf-4268-a5fc-7c077a2e7b39</x:String>
+                        </scg:List>
+                        <scg:List x:TypeArguments="x:Object" x:Key="LegacyConfiguration" Capacity="7">
+                          <x:Null />
+                          <x:Null />
+                          <x:Null />
+                          <x:Null />
+                          <x:Null />
+                          <x:Null />
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </scg:List>
                       </usau:BackupSlot.BackupValues>
                     </usau:BackupSlot>
                   </ui:SendMail.ConnectionDetailsBackupSlot>
@@ -247,58 +258,63 @@
                     <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                   </ui:SendMail.Files>
                 </ui:SendMail>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Gửi email đến: &quot; &amp; strEmail]" />
-                <If Condition="[Regex.IsMatch(strEmail, &quot;^[^@]+@[^@]+\.[^@]+$&quot;)]" DisplayName="If" sap:VirtualizedContainerService.HintSize="484.8,1532.8" sap2010:WorkflowViewState.IdRef="If_2">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Gửi email đến: &quot; &amp; strEmail]" />
+                <If Condition="[Regex.IsMatch(strEmail, &quot;^[^@]+@[^@]+\.[^@]+$&quot;)]" DisplayName="If" sap:VirtualizedContainerService.HintSize="520,1192" sap2010:WorkflowViewState.IdRef="If_2">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="483.2,701.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="518.4,360.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,641.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendMail_5" IgnoreCRL="False" IsBodyHtml="False" MailMessage="[New System.Net.Mail.MailMessage() With { .IsBodyHtml = True }]" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
-                          <ui:SendMail.AttachmentsBackup>
-                            <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
-                              <usau:BackupSlot.BackupValues>
-                                <scg:Dictionary x:TypeArguments="umame:AttachmentInputMode, scg:List(x:Object)" />
-                              </usau:BackupSlot.BackupValues>
-                            </usau:BackupSlot>
-                          </ui:SendMail.AttachmentsBackup>
-                          <ui:SendMail.ConnectionDetailsBackupSlot>
-                            <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
-                              <usau:BackupSlot.BackupValues>
-                                <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
-                              </usau:BackupSlot.BackupValues>
-                            </usau:BackupSlot>
-                          </ui:SendMail.ConnectionDetailsBackupSlot>
-                          <ui:SendMail.Files>
-                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                          </ui:SendMail.Files>
-                        </ui:SendMail>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Email đã được gửi thành công đến &quot; &amp; strEmail]" />
-                      </Sequence>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,135.2" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,24.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="416,384" sap2010:WorkflowViewState.IdRef="SendMail_7" IgnoreCRL="False" IsBodyHtml="False" MailMessage="[New System.Net.Mail.MailMessage() With { .IsBodyHtml = True }]" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
+                              <ui:SendMail.AttachmentsBackup>
+                                <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
+                                  <usau:BackupSlot.BackupValues>
+                                    <scg:Dictionary x:TypeArguments="umame:AttachmentInputMode, scg:List(x:Object)" />
+                                  </usau:BackupSlot.BackupValues>
+                                </usau:BackupSlot>
+                              </ui:SendMail.AttachmentsBackup>
+                              <ui:SendMail.ConnectionDetailsBackupSlot>
+                                <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
+                                  <usau:BackupSlot.BackupValues>
+                                    <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+                                  </usau:BackupSlot.BackupValues>
+                                </usau:BackupSlot>
+                              </ui:SendMail.ConnectionDetailsBackupSlot>
+                              <ui:SendMail.Files>
+                                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                              </ui:SendMail.Files>
+                            </ui:SendMail>
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                      </ui:CommentOut>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Email đã được gửi thành công đến &quot; &amp; strEmail]" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="483.2,701.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518.4,701.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,641.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,641.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendMail_6" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
+                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="15c1acff-7dbf-4268-a5fc-7c077a2e7b39" ConnectionMode="IntegrationService" ContinueOnError="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendMail_6" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
                           <ui:SendMail.AttachmentsBackup>
                             <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
                               <usau:BackupSlot.BackupValues>
