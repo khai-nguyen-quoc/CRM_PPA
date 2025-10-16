@@ -1,0 +1,6 @@
+{
+  "Name": "Final_RPAproject",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "MainFlow.xaml"
+}
