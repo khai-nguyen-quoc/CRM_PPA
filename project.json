@@ -2,8 +2,10 @@
   "name": "Final_RPAproject",
   "projectId": "cc332fd9-d0ba-4887-8f79-31ca9ec18756",
   "description": "Blank Process",
-  "main": "MainFlow.xaml",
+  "main": "Flowchart.xaml",
   "dependencies": {
+    "UiPath.Excel.Activities": "[3.1.1]",
+    "UiPath.Mail.Activities": "[2.4.10]",
     "UiPath.System.Activities": "[25.6.1]"
   },
   "webServices": [],
@@ -47,6 +49,12 @@
     {
       "filePath": "MainFlow.xaml",
       "uniqueId": "b6809207-795e-44bc-a4b8-0ed8f648cf78",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Flowchart.xaml",
+      "uniqueId": "fe8170b4-347c-4ed3-bedd-b642c75d0567",
       "input": [],
       "output": []
     }
