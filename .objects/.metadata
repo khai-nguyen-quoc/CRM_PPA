@@ -1,8 +1,14 @@
 ﻿{
   "Type": "Library",
+<<<<<<< HEAD
   "Id": "mAnWDJfUu0qxLoHcyAVdNw",
   "Created": "2025-10-15T17:40:46.9037046Z",
   "Updated": "2025-10-15T17:40:46.9037046Z",
+=======
+  "Id": "4uOAxyAxjEah3Ml_P7y9-Q",
+  "Created": "2025-10-15T17:22:41.3802066Z",
+  "Updated": "2025-10-15T17:22:41.3802066Z",
+>>>>>>> 47d5bebd9caecb22fd4755683e208c7b03f19cfa
   "CreatedBy": [
     "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
   ]
