@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="ZXaba-TofEiM4eB98NnRyQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvElementArea="1077, 1112, 430, 27" CvType="InputBox" DesignTimeRectangle="1082, 1115, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='newUnitPriceInput' tag='INPUT' type='number' class='new-unit-price-input' placeholder='0.00' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="49218ecc-b3b6-4cb0-8173-7e7598cbdf08" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="1082, 1099, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Đơn giá:' parentid='newProductInputGroup' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Đơn giá:' /&gt;" Guid="9f22c7a4-0b01-4497-8a8b-4d504591cfbb" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="506518dcd59e115fc56f728580fc8aed.png" xmlns="">0wlO5GSsG00OWk5hPE0hp0w</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

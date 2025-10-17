@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="m3rgbp0j50SWgSRkC_QXyw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvElementArea="1291, 1360, 86, 29" CvTextArea="1307, 1367, 58, 14" CvTextArgument="Xulniledo" CvType="Button" DesignTimeRectangle="1294, 1363, 83, 25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='exportPdfButton' tag='BUTTON' /&gt;" Guid="8ffd6e00-d0b0-434e-9ea1-12e9fb68d020" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="eecda325311980ea4350816cc3c7c241.png" xmlns="">03_QJAK7tmk2bZmMjHTJdkw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

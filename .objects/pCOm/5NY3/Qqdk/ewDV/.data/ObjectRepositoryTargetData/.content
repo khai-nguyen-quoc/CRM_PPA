@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="BYbfz_-iPUmF8ydCgfgU1A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvElementArea="1079, 617, 428, 27" CvType="InputBox" DesignTimeRectangle="1082, 621, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='dueDateInput' tag='INPUT' type='text' class='due-date-input' placeholder='Nhập tự do (vd: 15/10/2025)' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="750497c8-7242-4c4c-8ed6-019b1927d413" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvTextArea="1079, 607, 22, 10" CvTextArgument="PpPy" CvType="Text" DesignTimeRectangle="1082, 605, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Ngày đáo hạn:' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Ngày đáo hạn:' /&gt;" Guid="1350e1eb-6eed-48fc-9b81-e3adb6cf67df" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="21b882d7c8b02d2923fb9bd099b98232.png" xmlns="">0Y7iZA7zfEk2U4QRLRDDo8g</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

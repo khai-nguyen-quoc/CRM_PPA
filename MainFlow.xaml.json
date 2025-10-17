@@ -1,0 +1,45 @@
+{
+  "DisplayName": "MainFlow",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_DatabaseFilePath",
+      "DisplayName": "in_DatabaseFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "DB_KH.xlsx",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_UploadedFilePath",
+      "DisplayName": "in_UploadedFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Dữ liệu đơn hàng.xlsx",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_dtMerged",
+      "DisplayName": "out_dtMerged",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

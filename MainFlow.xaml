@@ -1,4 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MainFlow" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="MainFlow_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MainFlow" this:MainFlow.in_DatabaseFilePath="DB_KH.xlsx" this:MainFlow.in_UploadedFilePath="Dữ liệu đơn hàng mới.xlsx" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_dtMerged" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_DatabaseFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_UploadedFilePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>MainFlow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -25,6 +34,28 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.Office.Interop.Word</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -50,18 +81,525 @@
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="MainFlow" sap:VirtualizedContainerService.HintSize="644,271.65666666666664" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="MainFlow" sap:VirtualizedContainerService.HintSize="652,275.65666666666664" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="CurrentInvoicesNumber" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtExxistingData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtUploadedData" />
+      <Variable x:TypeArguments="x:String" Name="InvoiceNumber" />
+    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Size x:Key="ShapeSize">50,50</av:Size>
         <av:Point x:Key="ShapeLocation">305,35</av:Point>
+        <av:PointCollection x:Key="ConnectorLocation">330,85 330,125</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Null />
+      <x:Reference>__ReferenceID1</x:Reference>
     </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">275,125</av:Point>
+          <av:Size x:Key="ShapeSize">110,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">330,195 330,235</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Data processing" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtUploadedData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="[in_UploadedFilePath]" />
+        <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtExxistingData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Sheet1" WorkbookPath="[in_DatabaseFilePath]" />
+        <ui:MergeDataTable Destination="[dtExxistingData]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtUploadedData]" />
+        <Assign sap:VirtualizedContainerService.HintSize="434,115.5" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable">[out_dtMerged]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable">[dtUploadedData]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[out_dtMerged]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet1" WorkbookPath="[in_DatabaseFilePath]" />
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">275,235</av:Point>
+              <av:Size x:Key="ShapeSize">110,70</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Auto create Invoice" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="Unitprice" />
+              <Variable x:TypeArguments="x:String" Name="Quantity" />
+              <Variable x:TypeArguments="x:String" Name="Product" />
+              <Variable x:TypeArguments="x:String" Name="CustomerEmail" />
+              <Variable x:TypeArguments="x:String" Name="CustomerPhoneNum" />
+              <Variable x:TypeArguments="x:String" Name="CustomerAdress" />
+              <Variable x:TypeArguments="x:String" Name="CustomerName" />
+              <Variable x:TypeArguments="x:String" Name="DueDate" />
+              <Variable x:TypeArguments="x:String" Name="IssueDate" />
+              <Variable x:TypeArguments="x:Boolean" Name="InvoiceStatus" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtUploadedData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="688,5164" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="686,4990" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome ACME System 1 - Dashboard" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="652,4930" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" ScopeGuid="12289fb7-7c76-4443-bb99-ea184a1b2c72" Version="V2">
+                      <uix:NApplicationCard.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                          </ActivityAction.Argument>
+                          <Sequence sap:VirtualizedContainerService.HintSize="618,4688.5" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="584,4405.5" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="550,335.5" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[InvoiceNumber]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Số hóa đơn").ToString()]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[IssueDate]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Ngày lập").ToString()]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[DueDate]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Ngày đáo hạn").ToString()]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[CustomerName]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Tên khách hàng").ToString]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[CustomerAdress]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Địa chỉ").ToString]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[CustomerPhoneNum]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Số điện thoại").ToString]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[CustomerEmail]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow("Email").ToString]</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Số hóa đơn'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_21" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[InvoiceNumber]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="6194b60d-8127-400b-bf57-8aee945a4409" ContentHash="wXCZZtRwf0K6tGBpUJvNnQ" CvElementArea="1078, 521, 428, 28" CvType="InputBox" DesignTimeRectangle="1082, 525, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='invoiceNumberInput' tag='INPUT' type='text' class='invoice-number-input' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3f8d2435-1eb3-46ea-b3a9-bc4dd994eac6" InformativeScreenshot="d2a1cb92a7c0b04b614bde80111024b5.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/9wjTWSW1TEKBSqwWzAffUw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CVScreenId="6194b60d-8127-400b-bf57-8aee945a4409" CvTextArea="1079, 507, 46, 12" CvTextArgument="swri" CvType="Text" DesignTimeRectangle="1082, 509, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Số hóa đơn:' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Số hóa đơn:' /&gt;" Guid="4a0f7c39-0e87-43b3-9925-0e3bc85bec3b" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Ngày lập'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_23" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[IssueDate]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="VMv4vVfG4keo0lc2HqsJdQ" CvElementArea="1078, 569, 429, 28" CvType="InputBox" DesignTimeRectangle="1082, 573, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='invoiceDateInput' tag='INPUT' type='text' class='invoice-date-input' placeholder='Nhập tự do (vd: 08/10/2025)' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="a10db9e5-e658-4e62-8a18-3b357b1fdd7a" InformativeScreenshot="92eb0c8c9b28f326986fa190a237fd81.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/IlAAJ2xz6ka7QCZT7D0_IA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="1082, 557, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Ngày lập:' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Ngày lập:' /&gt;" Guid="b7e79c96-9f2e-4b29-9337-d317d155674b" SearchSteps="FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Ngày đáo hạn'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_22" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[DueDate]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="BYbfz_-iPUmF8ydCgfgU1A" CvElementArea="1079, 617, 428, 27" CvType="InputBox" DesignTimeRectangle="1082, 621, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='dueDateInput' tag='INPUT' type='text' class='due-date-input' placeholder='Nhập tự do (vd: 15/10/2025)' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="750497c8-7242-4c4c-8ed6-019b1927d413" InformativeScreenshot="21b882d7c8b02d2923fb9bd099b98232.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/ewDV5wIsEUuEc2Q1WXHMpA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvTextArea="1079, 607, 22, 10" CvTextArgument="PpPy" CvType="Text" DesignTimeRectangle="1082, 605, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Ngày đáo hạn:' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Ngày đáo hạn:' /&gt;" Guid="1350e1eb-6eed-48fc-9b81-e3adb6cf67df" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Tên khách hàng'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_24" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[CustomerName]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="Ejdg6G86KkCHC_Qof1aiAQ" CvElementArea="1079, 744, 426, 28" CvType="InputBox" DesignTimeRectangle="1082, 748, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='customerNameInput' tag='INPUT' type='text' class='customer-name-input' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="786b5b68-eee0-46e4-b015-bc72e543080a" InformativeScreenshot="d0157f723fb18c0f883292ac5d6a00b2.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/8YroYAXzhUS67iHywBiV0A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvTextArea="1079, 731, 60, 12" CvTextArgument="Rihasoing" CvType="Text" DesignTimeRectangle="1082, 732, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='customerDetailsSection' tag='LABEL' type='' class='' aaname='Tên khách hàng:' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Tên khách hàng:' /&gt;" Guid="1c9643c1-b3c7-4a01-a8b5-89588a8b5e9e" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Địa chỉ'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_25" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[CustomerAdress]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="jETtzDv39EGxxok0cfvKBw" CvElementArea="1079, 792, 428, 28" CvType="InputBox" DesignTimeRectangle="1082, 796, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='customerAddressInput' tag='INPUT' type='text' class='customer-address-input' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="9fff2776-314d-423d-8552-6b502c4a096d" InformativeScreenshot="ba0b92b18a5262c7c37fcf96d7eeac45.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/hHEb7fZDRECDmL-b6ac4iA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="1082, 780, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Địa chỉ:' parentid='customerDetailsSection' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Địa chỉ:' /&gt;" Guid="a0133666-57cb-408b-b889-b4ede203b378" SearchSteps="FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Số điện thoại'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_26" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[CustomerPhoneNum]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="03WemO_c70mhqie-3DxaOg" CvElementArea="1080, 841, 426, 27" CvType="InputBox" DesignTimeRectangle="1082, 844, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='customerPhoneInput' tag='INPUT' type='tel' class='customer-phone-input' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="00f1d57a-6137-4627-a4f4-bb991bb703f3" InformativeScreenshot="da0a07adb530ba612b61e94c691bcffa.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/66kaVfyuTkiXIqSdMOqX8Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="1082, 828, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Số điện thoại:' parentid='customerDetailsSection' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Số điện thoại:' /&gt;" Guid="808ce7fa-a4cc-4d63-928a-605f69408fa5" SearchSteps="FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="550,291" sap2010:WorkflowViewState.IdRef="NTypeInto_27" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[CustomerEmail]" Version="V5">
+                                <uix:NTypeInto.Target>
+                                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="g6GxIhZ7LE6dnIKqUC8KXA" CvElementArea="1079, 889, 427, 26" CvType="InputBox" DesignTimeRectangle="1082, 892, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='customerEmailInput' tag='INPUT' type='email' class='customer-email-input' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="890611b8-ef96-48fb-bf83-2621961a26e3" InformativeScreenshot="3e40a4a4732112c34f096daa2b0d09a9.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/a08Ay0mbKEae6MPgPCyTcA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvTextArea="1079, 871, 24, 18" CvTextArgument="-" CvType="Text" DesignTimeRectangle="1082, 876, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Email:' parentid='customerDetailsSection' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Email:' /&gt;" Guid="3869563a-33a8-4677-93ee-a50318ac04ab" SearchSteps="FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NTypeInto.Target>
+                                <uix:NTypeInto.VerifyOptions>
+                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <InArgument x:TypeArguments="x:Boolean" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                      <InArgument x:TypeArguments="x:Double" />
+                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  </uix:VerifyExecutionTypeIntoOptions>
+                                </uix:NTypeInto.VerifyOptions>
+                              </uix:NTypeInto>
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtUploadedData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="550,1939" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                                <ui:ForEachRow.Body>
+                                  <ActivityAction x:TypeArguments="sd:DataRow">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,1763" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:String" Name="sanphamInput" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="514,115.5" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[CurrentInvoicesNumber]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[CurrentRow("Số hóa đơn").ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <If Condition="[CurrentInvoicesNumber = InvoiceNumber]" sap:VirtualizedContainerService.HintSize="514,1587.5" sap2010:WorkflowViewState.IdRef="If_3">
+                                        <If.Then>
+                                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,1366.5" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,211.5" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                                              <ui:MultipleAssign.AssignOperations>
+                                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[Product]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[CurrentRow("Sản phẩm").ToString]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[Quantity]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[CurrentRow("Số lượng").ToString]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[Unitprice]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[CurrentRow("Đơn giá").ToString]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                </scg:List>
+                                              </ui:MultipleAssign.AssignOperations>
+                                            </ui:MultipleAssign>
+                                            <Assign sap:VirtualizedContainerService.HintSize="478,115.5" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:String">[sanphamInput]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:String">[Product.Replace("[", "[[").Replace("]", "]]")]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Sản pẩm'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="478,253.5" sap2010:WorkflowViewState.IdRef="NTypeInto_28" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[Product]" Version="V5">
+                                              <uix:NTypeInto.Target>
+                                                <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="LPUGdjNNOE-dqlpFxJlJog" CvElementArea="1078, 1015, 428, 27" CvType="InputBox" DesignTimeRectangle="1082, 1019, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='newProductNameInput' tag='INPUT' type='text' class='new-product-name-input' placeholder='Nhập tên sản phẩm' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="58c26cfa-8a06-4b8d-8615-49a6a9f3fea8" InformativeScreenshot="3c036adb836d2d8e56f14363ce120e1a.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/zevqOKGjKUGAYOFnXtxulA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                                  <uix:TargetAnchorable.Anchors>
+                                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                      <uix:Target DesignTimeRectangle="1082, 1003, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='newProductInputGroup' tag='LABEL' type='' class='' aaname='Tên sản phẩm:' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Tên sản phẩm:' /&gt;" Guid="72ebfdda-37f8-41b5-b390-b64105001ccf" SearchSteps="FuzzySelector" />
+                                                    </scg:List>
+                                                  </uix:TargetAnchorable.Anchors>
+                                                </uix:TargetAnchorable>
+                                              </uix:NTypeInto.Target>
+                                            </uix:NTypeInto>
+                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Số lượng'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="478,253.5" sap2010:WorkflowViewState.IdRef="NTypeInto_29" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[Quantity]" Version="V5">
+                                              <uix:NTypeInto.Target>
+                                                <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="ak_K1E16b0StHUqPSvEo7A" CvElementArea="1079, 1064, 428, 27" CvType="InputBox" DesignTimeRectangle="1082, 1067, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='newQuantityInput' tag='INPUT' type='number' class='new-quantity-input' placeholder='1' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="d2b735b7-3f9c-4025-82e1-9a651a364ec8" InformativeScreenshot="9bde019554c4ff50c0d9ded93ce357ef.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/ZgvU_VBq202VQYlmAtw4Rw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                                  <uix:TargetAnchorable.Anchors>
+                                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                      <uix:Target CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" CvTextArea="1079, 1049, 36, 14" CvTextArgument="Wug" CvType="Text" DesignTimeRectangle="1082, 1051, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Số lượng:' parentid='newProductInputGroup' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Số lượng:' /&gt;" Guid="c3ff8db0-f916-4925-94d3-76484c666f51" SearchSteps="FuzzySelector, CV" />
+                                                    </scg:List>
+                                                  </uix:TargetAnchorable.Anchors>
+                                                </uix:TargetAnchorable>
+                                              </uix:NTypeInto.Target>
+                                            </uix:NTypeInto>
+                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Đơn giá'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="478,253.5" sap2010:WorkflowViewState.IdRef="NTypeInto_30" InteractionMode="SameAsCard" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Text="[Unitprice]" Version="V5">
+                                              <uix:NTypeInto.Target>
+                                                <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="ZXaba-TofEiM4eB98NnRyQ" CvElementArea="1077, 1112, 430, 27" CvType="InputBox" DesignTimeRectangle="1082, 1115, 423, 23" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='newUnitPriceInput' tag='INPUT' type='number' class='new-unit-price-input' placeholder='0.00' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="49218ecc-b3b6-4cb0-8173-7e7598cbdf08" InformativeScreenshot="506518dcd59e115fc56f728580fc8aed.png" IsResponsive="True" Reference="IDY4gY_HME6yi24-4HeaWA/Z--rGAPFd06jv_UMEsaVcw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                                                  <uix:TargetAnchorable.Anchors>
+                                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                      <uix:Target DesignTimeRectangle="1082, 1099, 423, 12" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Đơn giá:' parentid='newProductInputGroup' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Đơn giá:' /&gt;" Guid="9f22c7a4-0b01-4497-8a8b-4d504591cfbb" SearchSteps="FuzzySelector" />
+                                                    </scg:List>
+                                                  </uix:TargetAnchorable.Anchors>
+                                                </uix:TargetAnchorable>
+                                              </uix:NTypeInto.Target>
+                                            </uix:NTypeInto>
+                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="478,219" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Version="V5">
+                                              <uix:NClick.Target>
+                                                <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="YoMU9wbve0CdOBvxKGCipA" CvElementArea="1079, 1144, 97, 29" CvTextArea="1093, 1149, 70, 16" CvTextArgument="Teasepnd" CvType="Button" DesignTimeRectangle="1082, 1147, 93, 25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='addProductButton' tag='BUTTON' /&gt;" Guid="f28c9e2c-b516-4d91-89d6-b5f1278f9d04" InformativeScreenshot="2816354d7edb3dfc320d23646e523eca.png" Reference="IDY4gY_HME6yi24-4HeaWA/-lcHr102iE-k3cnmWnLx7A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                                              </uix:NClick.Target>
+                                              <uix:NClick.VerifyOptions>
+                                                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                                  <uix:VerifyExecutionOptions.Retry>
+                                                    <InArgument x:TypeArguments="x:Boolean" />
+                                                  </uix:VerifyExecutionOptions.Retry>
+                                                  <uix:VerifyExecutionOptions.Timeout>
+                                                    <InArgument x:TypeArguments="x:Double" />
+                                                  </uix:VerifyExecutionOptions.Timeout>
+                                                </uix:VerifyExecutionOptions>
+                                              </uix:NClick.VerifyOptions>
+                                            </uix:NClick>
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,90.5" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Sequence>
+                                        </If.Else>
+                                      </If>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ForEachRow.Body>
+                              </ui:ForEachRow>
+                            </Sequence>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Tổng thanh toán 19.68'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="584,221" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="12289fb7-7c76-4443-bb99-ea184a1b2c72" Version="V5">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="e8c819ab-a386-44bc-865d-d7a49beb4dc0" ContentHash="m3rgbp0j50SWgSRkC_QXyw" CvElementArea="1291, 1360, 86, 29" CvTextArea="1307, 1367, 58, 14" CvTextArgument="Xulniledo" CvType="Button" DesignTimeRectangle="1294, 1363, 83, 25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='exportPdfButton' tag='BUTTON' /&gt;" Guid="8ffd6e00-d0b0-434e-9ea1-12e9fb68d020" InformativeScreenshot="eecda325311980ea4350816cc3c7c241.png" Reference="IDY4gY_HME6yi24-4HeaWA/GviwJd6ZzkeYquoMCsLBXg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                              </uix:NClick.Target>
+                              <uix:NClick.VerifyOptions>
+                                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                  <uix:VerifyExecutionOptions.Retry>
+                                    <InArgument x:TypeArguments="x:Boolean" />
+                                  </uix:VerifyExecutionOptions.Retry>
+                                  <uix:VerifyExecutionOptions.Timeout>
+                                    <InArgument x:TypeArguments="x:Double" />
+                                  </uix:VerifyExecutionOptions.Timeout>
+                                </uix:VerifyExecutionOptions>
+                              </uix:NClick.VerifyOptions>
+                            </uix:NClick>
+                          </Sequence>
+                        </ActivityAction>
+                      </uix:NApplicationCard.Body>
+                      <uix:NApplicationCard.TargetApp>
+                        <uix:TargetApp Area="-13, -13, 2586, 1530" BrowserType="Chrome" ContentHash="JydoiWFk-kuB2ihjGINIBg" IconBase64="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" InformativeScreenshot="563173ea60b3c477dd3018243dafd3d3.jpg" Reference="IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg" Selector="&lt;html app='chrome.exe' title='Tạo Hóa Đơn' /&gt;" Url="http://127.0.0.1:5000/" Version="V2" />
+                      </uix:NApplicationCard.TargetApp>
+                    </uix:NApplicationCard>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
   </Flowchart>
 </Activity>

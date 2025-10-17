@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Tổng thanh toán 19.68",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "GviwJd6ZzkeYquoMCsLBXg",
+  "Reference": "IDY4gY_HME6yi24-4HeaWA/GviwJd6ZzkeYquoMCsLBXg",
+  "ParentRef": "IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg",
+  "Created": "2025-10-16T09:20:16.2893982Z",
+  "Updated": "2025-10-16T09:20:16.2893982Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

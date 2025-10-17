@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Ngày đáo hạn",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "ewDV5wIsEUuEc2Q1WXHMpA",
+  "Reference": "IDY4gY_HME6yi24-4HeaWA/ewDV5wIsEUuEc2Q1WXHMpA",
+  "ParentRef": "IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg",
+  "Created": "2025-10-16T08:10:26.02105Z",
+  "Updated": "2025-10-16T08:10:26.02105Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Ngày lập",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "IlAAJ2xz6ka7QCZT7D0_IA",
+  "Reference": "IDY4gY_HME6yi24-4HeaWA/IlAAJ2xz6ka7QCZT7D0_IA",
+  "ParentRef": "IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg",
+  "Created": "2025-10-16T08:09:53.1247784Z",
+  "Updated": "2025-10-16T08:09:53.1247784Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

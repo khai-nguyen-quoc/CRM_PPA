@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Số hóa đơn",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "9wjTWSW1TEKBSqwWzAffUw",
+  "Reference": "IDY4gY_HME6yi24-4HeaWA/9wjTWSW1TEKBSqwWzAffUw",
+  "ParentRef": "IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg",
+  "Created": "2025-10-16T08:09:00.5280053Z",
+  "Updated": "2025-10-16T08:09:00.5280053Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

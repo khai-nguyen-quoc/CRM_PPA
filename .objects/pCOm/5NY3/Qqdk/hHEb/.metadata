@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Địa chỉ",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "hHEb7fZDRECDmL-b6ac4iA",
+  "Reference": "IDY4gY_HME6yi24-4HeaWA/hHEb7fZDRECDmL-b6ac4iA",
+  "ParentRef": "IDY4gY_HME6yi24-4HeaWA/QqdkwXfZe0GhZeopGHpYTg",
+  "Created": "2025-10-16T08:11:55.885432Z",
+  "Updated": "2025-10-16T08:11:55.885432Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

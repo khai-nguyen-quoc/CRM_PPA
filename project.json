@@ -1,10 +1,14 @@
 {
-  "name": "Final_RPAproject",
-  "projectId": "cc332fd9-d0ba-4887-8f79-31ca9ec18756",
+  "name": "CRM_PPA",
+  "projectId": "bf7aa37c-495e-453c-b020-ab65d1ee690e",
   "description": "Blank Process",
   "main": "MainFlow.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "[25.6.1]"
+    "UiPath.Excel.Activities": "[3.2.1]",
+    "UiPath.Mail.Activities": "[2.4.10]",
+    "UiPath.PDF.Activities": "[3.24.0]",
+    "UiPath.System.Activities": "[25.10.2]",
+    "UiPath.UIAutomation.Activities": "[25.10.16]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -46,7 +50,13 @@
   "entryPoints": [
     {
       "filePath": "MainFlow.xaml",
-      "uniqueId": "b6809207-795e-44bc-a4b8-0ed8f648cf78",
+      "uniqueId": "f7a88920-6c9d-4d1e-bf10-89034cdcaeba",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Dailyflow.xaml",
+      "uniqueId": "01a1b058-0ae5-45fe-bf7f-7a34a7f5f1f6",
       "input": [],
       "output": []
     }
