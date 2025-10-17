@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Hóa Đơn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tạo Hóa Đơn Mới</h1>
+        <form id="invoiceForm">
+            <section class="invoice-details" id="invoiceDetailsSection">
+                <h2>Thông tin hóa đơn</h2>
+                <div class="form-group">
+                    <label for="invoiceNumber">Số hóa đơn:</label>
+                    <input type="text" id="invoiceNumberInput" name="invoiceNumber" required class="invoice-number-input">
+                </div>
+                <div class="form-group">
+                    <label for="invoiceDate">Ngày lập:</label>
+                    <input type="text" id="invoiceDateInput" name="invoiceDate" placeholder="Nhập tự do (vd: 08/10/2025)" required class="invoice-date-input">
+                </div>
+                <div class="form-group">
+                    <label for="dueDate">Ngày đáo hạn:</label>
+                    <input type="text" id="dueDateInput" name="dueDate" placeholder="Nhập tự do (vd: 15/10/2025)" class="due-date-input">
+                </div>
+            </section>
+
+            <section class="customer-details" id="customerDetailsSection">
+                <h2>Thông tin khách hàng</h2>
+                <div class="form-group">
+                    <label for="customerName">Tên khách hàng:</label>
+                    <input type="text" id="customerNameInput" name="customerName" required class="customer-name-input">
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Địa chỉ:</label>
+                    <input type="text" id="customerAddressInput" name="customerAddress" class="customer-address-input">
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Số điện thoại:</label>
+                    <input type="tel" id="customerPhoneInput" name="customerPhone" class="customer-phone-input">
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email:</label>
+                    <input type="email" id="customerEmailInput" name="customerEmail" class="customer-email-input">
+                </div>
+            </section>
+
+            <section class="product-details" id="productDetailsSection">
+                <h2>Chi tiết sản phẩm</h2>
+                <div class="product-input-fields" id="newProductInputGroup">
+                    <div class="form-group">
+                        <label for="newProductName">Tên sản phẩm:</label>
+                        <input type="text" id="newProductNameInput" name="newProductName" placeholder="Nhập tên sản phẩm" required class="new-product-name-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="newQuantity">Số lượng:</label>
+                        <input type="number" id="newQuantityInput" name="newQuantity" min="1" placeholder="1" required class="new-quantity-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="newUnitPrice">Đơn giá:</label>
+                        <input type="number" id="newUnitPriceInput" name="newUnitPrice" min="0" step="0.01" placeholder="0.00" required class="new-unit-price-input">
+                    </div>
+                    <button type="button" id="addProductButton" class="primary-button add-product-button">Thêm sản phẩm</button>
+                </div>
+
+                <table id="productTable" class="product-table">
+                    <thead>
+                        <tr>
+                            <th class="product-table-header-name">Sản phẩm</th>
+                            <th class="product-table-header-quantity">Số lượng</th>
+                            <th class="product-table-header-unit-price">Đơn giá</th>
+                            <th class="product-table-header-total">Thành tiền</th>
+                            <th class="product-table-header-actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Product rows will be added here dynamically by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="invoice-summary" id="invoiceSummarySection">
+                <div class="summary-item">
+                    <label for="subtotalInput">Tổng tiền hàng:</label>
+                    <input type="text" id="subtotalInput" readonly class="subtotal-input">
+                </div>
+                <div class="summary-item">
+                    <label for="taxRateInput">Thuế (%):</label>
+                    <input type="number" id="taxRateInput" name="taxRate" min="0" value="8" step="0.01" class="tax-rate-input">
+                </div>
+                <div class="summary-item">
+                    <label for="grandTotalInput">Tổng thanh toán:</label>
+                    <input type="text" id="grandTotalInput" readonly class="grand-total-input">
+                </div>
+            </section>
+
+            <div class="form-actions" id="formActionsSection">
+                <button type="submit" id="saveDataButton" class="primary-button save-data-button">Lưu dữ liệu</button>
+                <button type="button" id="exportPdfButton" class="secondary-button export-pdf-button">Xuất hóa đơn</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

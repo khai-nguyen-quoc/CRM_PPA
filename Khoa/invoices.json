@@ -1,0 +1,137 @@
+[
+    {
+        "invoiceNumber": "625708",
+        "invoiceDate": "2025-10-29",
+        "dueDate": "2025-10-17",
+        "customerName": "Trịnh Tiến Đạt Khoa",
+        "customerAddress": "5863333",
+        "customerPhone": "0813849476",
+        "customerEmail": "khangchien0610@hotmail.com",
+        "totalProduct": "66.00",
+        "taxRate": 0,
+        "products": [
+            {
+                "productName": "khoa trịnh",
+                "quantity": 1,
+                "unitPrice": 5,
+                "totalProduct": 5
+            },
+            {
+                "productName": "6",
+                "quantity": 3,
+                "unitPrice": 22,
+                "totalProduct": 66
+            }
+        ],
+        "subtotal": 71,
+        "grandTotal": 71
+    },
+    {
+        "invoiceNumber": "470155",
+        "invoiceDate": "2025-10-28",
+        "dueDate": "2025-11-08",
+        "customerName": "Trịnh Tiến Đạt Khoa",
+        "customerAddress": "5863333",
+        "customerPhone": "0813849476",
+        "customerEmail": "khangchien0610@hotmail.com",
+        "totalProduct": "2600000.00",
+        "taxRate": 0.47,
+        "products": [
+            {
+                "productName": "khoa trịnh",
+                "quantity": 1,
+                "unitPrice": 5000,
+                "totalProduct": 5000
+            },
+            {
+                "productName": "Angela",
+                "quantity": 13,
+                "unitPrice": 200000,
+                "totalProduct": 2600000
+            }
+        ],
+        "subtotal": 2605000,
+        "grandTotal": 2617243.5
+    },
+    {
+        "invoiceNumber": "470155",
+        "invoiceDate": "2025-10-17",
+        "dueDate": "2025-10-17",
+        "customerName": "Trịnh Tiến Đạt Khoa",
+        "customerAddress": "5863333",
+        "customerPhone": "0813849476",
+        "customerEmail": "khangchien0610@hotmail.com",
+        "totalProduct": "525000.00",
+        "taxRate": 8,
+        "products": [
+            {
+                "productName": "khoa trịnh",
+                "quantity": 1,
+                "unitPrice": 5000,
+                "totalProduct": 5000
+            },
+            {
+                "productName": "khoa trịnh",
+                "quantity": 15,
+                "unitPrice": 35000,
+                "totalProduct": 525000
+            }
+        ],
+        "subtotal": 530000,
+        "grandTotal": 572400
+    },
+    {
+        "invoiceNumber": "470155",
+        "invoiceDate": "2025-10-17",
+        "dueDate": "2025-10-17",
+        "customerName": "Trịnh Tiến Đạt Khoa",
+        "customerAddress": "5863333",
+        "customerPhone": "0813849476",
+        "customerEmail": "khangchien0610@hotmail.com",
+        "totalProduct": "2860000.00",
+        "taxRate": 8,
+        "products": [
+            {
+                "productName": "khoa trịnh",
+                "quantity": 1,
+                "unitPrice": 5000,
+                "totalProduct": 5000
+            },
+            {
+                "productName": "khoa trịnh",
+                "quantity": 15,
+                "unitPrice": 35000,
+                "totalProduct": 525000
+            },
+            {
+                "productName": "dạt khoa",
+                "quantity": 13,
+                "unitPrice": 220000,
+                "totalProduct": 2860000
+            }
+        ],
+        "subtotal": 3390000,
+        "grandTotal": 3661200
+    },
+    {
+        "invoiceNumber": "470155545444",
+        "invoiceDate": "08/10/2025",
+        "dueDate": "15/12/2025",
+        "customerName": "thomas edison",
+        "customerAddress": "5863333",
+        "customerPhone": "0813849476",
+        "customerEmail": "khangchien0610@hotmail.com",
+        "totalProduct": "30000000.00",
+        "taxRate": 8,
+        "products": [
+            {
+                "productName": "khoa trịnh",
+                "quantity": 5,
+                "unitPrice": 6000000,
+                "totalProduct": 30000000
+            }
+        ],
+        "subtotal": 30000000,
+        "grandTotal": 32400000
+    }
+]
