@@ -138,7 +138,7 @@
           <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Send email" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Send email" sap:VirtualizedContainerService.HintSize="588.8,3801.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="TotalAmount" />
           <Variable x:TypeArguments="x:String" Name="Rank" />
@@ -210,13 +210,13 @@
         </ui:CommentOut>
         <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" DataTable="[customerRankData]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="555.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[filteredCustomers]" SelectColumnsMode="Remove" />
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="555.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Rows count: &quot; &amp; customerRankData.Rows.Count.ToString]" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filteredCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="555.2,2546.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filteredCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="555.2,2484" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,2373.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,2311.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -254,7 +254,7 @@
                     <InArgument x:TypeArguments="x:String">[String.Format("Chào {0},&lt;br&gt;&lt;br&gt;Xếp hạng của bạn hiện tại là: {1}&lt;br&gt;&lt;br&gt;Cảm ơn bạn đã mua sắm với chúng tôi! &lt;br&gt;Cảm ơn bạn đã luôn đồng hành cùng chúng tôi!", strCustomer, Rank)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" From="{x:Null}" IgnoreCRL="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="29fcc006-b755-4a8c-96ff-2f43e314ab0e" ConnectionMode="IntegrationService" ContinueOnError="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="520,492.8" sap2010:WorkflowViewState.IdRef="SendMail_8" IsBodyHtml="True" ReplyTo="[Nothing]" SecureConnection="Auto" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="True" UseRichTextEditor="True">
+                <ui:SendMail ResourceAttachmentList="{x:Null}" AttachmentInputMode="FilePaths" Bcc="{x:Null}" Body="[template]" Cc="{x:Null}" ConnectionId="29fcc006-b755-4a8c-96ff-2f43e314ab0e" ConnectionMode="LegacyConfiguration" ContinueOnError="True" DisplayName="Send SMTP Email" Email="hieuntm22411@st.uel.edu.vn" EnableSSL="True" From="{x:Null}" sap:VirtualizedContainerService.HintSize="520,430.4" sap2010:WorkflowViewState.IdRef="SendMail_8" IgnoreCRL="False" IsBodyHtml="True" MailMessage="{x:Null}" Name="{x:Null}" Password="fsmi fmjs ilot ztyc" Port="465" ReplyTo="[Nothing]" ResourceAttachments="{x:Null}" Result="{x:Null}" SecureConnection="SslOnConnect" SecurePassword="{x:Null}" Server="smtp.gmail.com" Subject="Cập nhật hạng customer" TimeoutMS="{x:Null}" To="[strEmail]" UseISConnection="False" UseOAuth="{x:Null}" UseRichTextEditor="True">
                   <ui:SendMail.AttachmentsBackup>
                     <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
                       <usau:BackupSlot.BackupValues>
@@ -263,10 +263,10 @@
                     </usau:BackupSlot>
                   </ui:SendMail.AttachmentsBackup>
                   <ui:SendMail.ConnectionDetailsBackupSlot>
-                    <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
+                    <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="LegacyConfiguration">
                       <usau:BackupSlot.BackupValues>
                         <scg:List x:TypeArguments="x:Object" x:Key="IntegrationService" Capacity="1">
-                          <x:String>15c1acff-7dbf-4268-a5fc-7c077a2e7b39</x:String>
+                          <x:String>29fcc006-b755-4a8c-96ff-2f43e314ab0e</x:String>
                         </scg:List>
                         <scg:List x:TypeArguments="x:Object" x:Key="LegacyConfiguration" Capacity="7">
                           <x:Null />
@@ -384,7 +384,7 @@
           <av:PointCollection x:Key="ConnectorLocation">430.2,215.4 430.2,255</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Update Customer Rank" sap:VirtualizedContainerService.HintSize="537.6,3241.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <Sequence DisplayName="Update Customer Rank" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="filteredOrder" />
           <Variable x:TypeArguments="x:Int32" Name="monthsBack" />
