@@ -112,7 +112,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Flowchart" sap:VirtualizedContainerService.HintSize="916.8000000000001,602.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Flowchart" sap:VirtualizedContainerService.HintSize="914.4000000000001,602.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="strEmail" />
       <Variable x:TypeArguments="x:String" Name="template" />
@@ -254,7 +254,7 @@
                     <InArgument x:TypeArguments="x:String">[String.Format("Chào {0},&lt;br&gt;&lt;br&gt;Xếp hạng của bạn hiện tại là: {1}&lt;br&gt;&lt;br&gt;Cảm ơn bạn đã mua sắm với chúng tôi! &lt;br&gt;Cảm ơn bạn đã luôn đồng hành cùng chúng tôi!", strCustomer, Rank)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:SendMail ResourceAttachmentList="{x:Null}" AttachmentInputMode="FilePaths" Bcc="{x:Null}" Body="[template]" Cc="{x:Null}" ConnectionId="29fcc006-b755-4a8c-96ff-2f43e314ab0e" ConnectionMode="LegacyConfiguration" ContinueOnError="True" DisplayName="Send SMTP Email" Email="hieuntm22411@st.uel.edu.vn" EnableSSL="True" From="{x:Null}" sap:VirtualizedContainerService.HintSize="520,430.4" sap2010:WorkflowViewState.IdRef="SendMail_8" IgnoreCRL="False" IsBodyHtml="True" MailMessage="{x:Null}" Name="{x:Null}" Password="fsmi fmjs ilot ztyc" Port="465" ReplyTo="[Nothing]" ResourceAttachments="{x:Null}" Result="{x:Null}" SecureConnection="SslOnConnect" SecurePassword="{x:Null}" Server="smtp.gmail.com" Subject="Cập nhật hạng customer" TimeoutMS="{x:Null}" To="[strEmail]" UseISConnection="False" UseOAuth="{x:Null}" UseRichTextEditor="True">
+                <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[template]" ConnectionId="29fcc006-b755-4a8c-96ff-2f43e314ab0e" ConnectionMode="LegacyConfiguration" ContinueOnError="True" DisplayName="Send SMTP Email" Email="hieuntm22411@st.uel.edu.vn" EnableSSL="True" sap:VirtualizedContainerService.HintSize="520,430.4" sap2010:WorkflowViewState.IdRef="SendMail_8" IgnoreCRL="False" IsBodyHtml="True" Password="fsmi fmjs ilot ztyc" Port="465" ReplyTo="[Nothing]" SecureConnection="StartTls" Server="smtp.gmail.com" Subject="Cập nhật hạng customer" To="[strEmail]" UseISConnection="False" UseRichTextEditor="True">
                   <ui:SendMail.AttachmentsBackup>
                     <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
                       <usau:BackupSlot.BackupValues>
