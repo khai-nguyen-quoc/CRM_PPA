@@ -4,9 +4,16 @@
   "description": "Blank Process",
   "main": "MainFlow.xaml",
   "dependencies": {
+    "System.Xml.ReaderWriter": "[4.3.1]",
     "UiPath.Excel.Activities": "[3.2.1]",
+    "UiPath.GSuite.Activities": "[3.5.0-preview]",
+    "UiPath.IntegrationService.Activities": "[1.6.0]",
     "UiPath.Mail.Activities": "[2.4.10]",
-    "UiPath.System.Activities": "[25.6.1]"
+    "UiPath.MicrosoftOffice365.Activities": "[2.6.24]",
+    "UiPath.PDF.Activities": "[3.19.1]",
+    "UiPath.System.Activities": "[25.6.1]",
+    "UiPath.Testing.Activities": "[24.10.0]",
+    "UiPath.UIAutomation.Activities": "[24.10.0]"
   },
   "webServices": [],
   "entitiesStores": [],
