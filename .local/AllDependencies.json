@@ -23551,15 +23551,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dell\\.nuget\\packages\\": {}
+    "C:\\Users\\acer\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "CRM_PPA",
       "projectName": "CRM_PPA",
-      "projectPath": "C:\\RPA\\UiPath\\CRM_PPA\\.local",
-      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\RPA\\UiPath\\CRM_PPA\\.local",
+      "projectPath": "C:\\Users\\acer\\Documents\\UiPath\\CRM_PPA\\.local",
+      "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\acer\\Documents\\UiPath\\CRM_PPA\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"
@@ -23594,7 +23594,7 @@
             "version": "[25.10.16, 25.10.16]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Dell\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\acer\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
